@@ -20,8 +20,6 @@ import java.util.Map;
 @AllArgsConstructor
 public class ConvidadoModel extends PessoaModel {
 
-    // Agora, cada ConvidadoModel representa a associação de uma pessoa a um único evento.
-    // O ID do evento se torna uma parte crucial da identidade deste 'convidado'.
     private String eventoId;
     private StatusConfirmacao statusConfirmacao;
 
