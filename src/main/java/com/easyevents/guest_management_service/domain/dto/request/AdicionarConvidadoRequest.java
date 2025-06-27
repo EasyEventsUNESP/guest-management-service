@@ -14,5 +14,5 @@ import lombok.AllArgsConstructor;
 public class AdicionarConvidadoRequest {
     private String nome;
     private String email;
-    private int eventoId;
+    private String eventoId;
 }

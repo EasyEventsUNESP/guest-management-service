@@ -21,7 +21,6 @@ public class PessoaModel {
     @Id
     private String id;
     private String nome;
-    @Indexed(unique = true)
     private String email;
 
 }
