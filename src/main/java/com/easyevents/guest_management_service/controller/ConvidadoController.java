@@ -19,7 +19,7 @@ import java.util.List;
 public class ConvidadoController {
 
     @Autowired
-    private final ConvidadoService convidadoService; // Injeção do GuestService
+    private final ConvidadoService convidadoService;
 
     @GetMapping
     public String endpointTest() {
@@ -38,19 +38,19 @@ public class ConvidadoController {
         return convidadoService.listarConvidados(eventoId);
     }
 
-    // Endpoint para deletar um convidado por e-mail
+    // Endpoint para deletar um convidado por e-mail de um evento específico
     @DeleteMapping("/deletar/{eventoId}{email}")
     public ResponseEntity<ConvidadoResponse> delete(@PathVariable String eventoId, @PathVariable String email) {
         return convidadoService.deletarConvidado(eventoId, email);
     }
 
-    // Endpoint para atualizar um convidado
+    // Endpoint para atualizar um convidado de um evento específico
     @PutMapping("/atualizar")
     public ResponseEntity<ConvidadoResponse> update(@RequestBody AtualizarConvidadoRequest atualizarConvidadoRequest) {
         return convidadoService.atualizarConvidado(atualizarConvidadoRequest);
     }
 
-    // Endpoint para buscar um convidado por e-mail
+    // Endpoint para buscar um convidado por e-mail de um evento específico
     @GetMapping("/buscar/{eventoId}/{email}")
     public ResponseEntity<ConvidadoModel> searchByEmail(@PathVariable String eventoId, @PathVariable String email) {
         return convidadoService.buscarPorEmail(eventoId, email);
