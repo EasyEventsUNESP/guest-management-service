@@ -4,8 +4,7 @@ import com.easyevents.guest_management_service.domain.dto.request.AdicionarConvi
 import com.easyevents.guest_management_service.domain.dto.request.AtualizarConvidadoRequest;
 import com.easyevents.guest_management_service.domain.dto.response.ConvidadoResponse;
 import com.easyevents.guest_management_service.domain.model.ConvidadoModel;
-import com.easyevents.guest_management_service.service.ConvidadoService; // Supondo que você terá um GuestService
-import lombok.RequiredArgsConstructor;
+import com.easyevents.guest_management_service.service.ConvidadoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
