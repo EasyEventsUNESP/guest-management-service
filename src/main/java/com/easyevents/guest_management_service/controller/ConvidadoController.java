@@ -55,4 +55,9 @@ public class ConvidadoController {
     public ResponseEntity<ConvidadoModel> searchByEmail(@PathVariable String eventoId, @PathVariable String email) {
         return convidadoService.buscarPorEmail(eventoId, email);
     }
+
+    @PostMapping("/confirmar/{eventoId}/{email}")
+    public ResponseEntity<ConvidadoResponse> confirmarPresenca(@PathVariable String eventoId, @PathVariable String email) {
+        return convidadoService.confirmarPresenca(eventoId, email);
+    }
 }

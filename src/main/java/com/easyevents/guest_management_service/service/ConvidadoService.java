@@ -153,4 +153,30 @@ public class ConvidadoService {
         return guestOpt.map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
+
+    public ResponseEntity<ConvidadoResponse> confirmarPresenca(String eventoId, String email) {
+        ResponseEntity<ConvidadoResponse> eventValidation = validarEvento(eventoId);
+        if (eventValidation != null) return eventValidation;
+
+        // Busca o convidado pela combinação de email e eventoId
+        Optional<ConvidadoModel> guestOpt = convidadoRepository.findByEmailAndEventoId(email, eventoId);
+
+        if (guestOpt.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body(ConvidadoResponse.builder()
+                            .message("Convidado com email " + email + " não encontrado para o evento ID " + eventoId + ".")
+                            .success(false)
+                            .build());
+        }
+
+        ConvidadoModel guest = guestOpt.get();
+        guest.setStatusConfirmacao(StatusConfirmacao.CONFIRMADO); // Atualiza o status para confirmado
+        convidadoRepository.save(guest);
+
+        return ResponseEntity.ok(ConvidadoResponse.builder()
+                .message("Presença do convidado " + email + " confirmada para o evento " + eventoId + " com sucesso.")
+                .success(true)
+                .guestId(guest.getId())
+                .build());
+    }
 }
