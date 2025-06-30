@@ -15,11 +15,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/guest")
-@RequiredArgsConstructor
 public class ConvidadoController {
 
     @Autowired
-    private final ConvidadoService convidadoService;
+    private ConvidadoService convidadoService;
 
     // Endpoint para adicionar um novo convidado
     @PostMapping("/adicionar")
