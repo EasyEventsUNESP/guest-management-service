@@ -21,11 +21,6 @@ public class ConvidadoController {
     @Autowired
     private final ConvidadoService convidadoService;
 
-    @GetMapping
-    public String endpointTest() {
-        return "ERALDO VS MARIO!";
-    }
-
     // Endpoint para adicionar um novo convidado
     @PostMapping("/adicionar")
     public ResponseEntity<ConvidadoResponse> add(@RequestBody AdicionarConvidadoRequest adicionarConvidadoRequest) {
@@ -56,8 +51,16 @@ public class ConvidadoController {
         return convidadoService.buscarPorEmail(eventoId, email);
     }
 
+    // Endpoint para confirmar presença de um convidado em um evento específico
     @PostMapping("/confirmar/{eventoId}/{email}")
     public ResponseEntity<ConvidadoResponse> confirmarPresenca(@PathVariable String eventoId, @PathVariable String email) {
         return convidadoService.confirmarPresenca(eventoId, email);
     }
+
+    // Endpoint para negar presença de um convidado em um evento específico
+    @PostMapping("/negar/{eventoId}/{email}")
+    public ResponseEntity<ConvidadoResponse> negarPresenca(@PathVariable String eventoId, @PathVariable String email) {
+        return convidadoService.negarPresenca(eventoId, email);
+    }
+
 }
