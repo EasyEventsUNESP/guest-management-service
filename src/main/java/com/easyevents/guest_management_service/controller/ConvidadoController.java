@@ -45,7 +45,7 @@ public class ConvidadoController {
     }
 
     // Endpoint para buscar um convidado por e-mail de um evento específico
-    @GetMapping("/buscar/{eventoId}/{email}")
+    @GetMapping("/buscar-convidado/{eventoId}/{email}")
     public ResponseEntity<ConvidadoModel> searchByEmail(@PathVariable String eventoId, @PathVariable String email) {
         return convidadoService.buscarPorEmail(eventoId, email);
     }
